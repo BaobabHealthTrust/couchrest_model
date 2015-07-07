@@ -22,8 +22,12 @@ module CouchRest
         # It will try to inherit the database from an ancester
         # unless the use_database method has been used, in which
         # case a new connection will be started.
+        
+        # Modified the logic in this method to force connection to specified 
+        # database to allow for dynamic database connections
         def database
-          @database ||= prepare_database(super)
+          # @database ||= prepare_database(super)
+          @database = prepare_database(super)
         end
 
         def server
